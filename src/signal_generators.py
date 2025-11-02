@@ -21,3 +21,9 @@ def sawtooth_wave(freq, duration=DEFAULT_DUR, amp=1.0, width=1.0, fs=FS):
     """Sawtooth wave with selectable width (0.0–1.0)."""
     t = make_time(duration, fs)
     return amp * signal.sawtooth(2 * np.pi * freq * t, width=width)
+
+def white_noise(duration=DEFAULT_DUR, fs=FS, amp=1.0):
+    """Generate white noise between -1 and 1."""
+    n = int(np.floor(duration * fs))
+    return amp * np.random.uniform(low=-1.0, high=1.0, size=n)
+
