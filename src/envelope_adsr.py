@@ -1,38 +1,22 @@
 import numpy as np
 from src.utils import make_time, FS
 
-def adsr_envelope(attack=0.1, decay=0.1, sustain_level=0.7, sustain_time=0.5, release=0.2, fs=FS):
-    """
-    Generate an ADSR envelope.
+def adsr_envelope(attack=0.1, decay=0.1, sustain_level=0.7, sustain_time=0.5, release=0.2, fs=48000):
+    import numpy as np
+    fs = int(fs)
 
-    Parameters
-    ----------
-    attack : float
-        Attack duration in seconds (rise 0 → 1).
-    decay : float
-        Decay duration in seconds (1 → sustain_level).
-    sustain_level : float
-        Amplitude during sustain phase (0–1).
-    sustain_time : float
-        Sustain duration in seconds.
-    release : float
-        Release duration in seconds (fall to 0).
-    fs : int
-        Sampling frequency.
+    Na = int(round(fs*attack))
+    Nd = int(round(fs*decay))
+    Ns = int(round(fs*sustain_time))
+    Nr = int(round(fs*release))
 
-    Returns
-    -------
-    env : ndarray
-        Envelope samples in range [0, 1].
-    t : ndarray
-        Time vector corresponding to env.
-    """
-    a = np.linspace(0, 1, int(fs * attack), endpoint=False)
-    d = np.linspace(1, sustain_level, int(fs * decay), endpoint=False)
-    s = np.ones(int(fs * sustain_time)) * sustain_level
-    r = np.linspace(sustain_level, 0, int(fs * release))
+    a = np.linspace(0.0, 1.0, Na, endpoint=True) if Na > 0 else np.empty(0)
+    d = (np.linspace(1.0, sustain_level, Nd+1, endpoint=True)[1:] if Nd > 0 else np.empty(0))
+    s = (np.full(Ns, sustain_level) if Ns > 0 else np.empty(0))
+    r = (np.linspace(sustain_level, 0.0, Nr+1, endpoint=True)[1:] if Nr > 0 else np.empty(0))
+
     env = np.concatenate((a, d, s, r))
-    t = np.arange(len(env)) / fs
+    t = np.arange(env.size)/fs
     return env, t
 
 def apply_envelope(signal, envelope):

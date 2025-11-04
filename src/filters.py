@@ -3,27 +3,6 @@ from scipy import signal
 from src.utils import FS
 
 def design_filter(kind='lowpass', cutoff=1000, fs=FS, order=4, band=None):
-    """
-    Design a digital Butterworth filter (low/high/band/all-pass).
-
-    Parameters
-    ----------
-    kind : str
-        'lowpass', 'highpass', 'bandpass', or 'allpass'
-    cutoff : float
-        Cutoff frequency (for low/high-pass) in Hz.
-    band : tuple(float, float)
-        For 'bandpass', a tuple (lowcut, highcut) in Hz.
-    order : int
-        Filter order.
-    fs : int
-        Sampling rate.
-
-    Returns
-    -------
-    b, a : ndarray
-        Filter numerator and denominator coefficients.
-    """
     if kind == 'bandpass':
         if band is None:
             raise ValueError("For bandpass, provide band=(low, high).")
