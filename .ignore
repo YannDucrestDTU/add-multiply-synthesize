@@ -1,0 +1,37 @@
+# =====================================
+# Virtual environments
+# =====================================
+.venv/
+venv/
+env/
+
+# =====================================
+# Python cache and compiled files
+# =====================================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+
+# =====================================
+# Jupyter notebooks
+# =====================================
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# =====================================
+# IDE and OS-specific files
+# =====================================
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# =====================================
+# Logs and temporary files
+# =====================================
+*.log
+*.tmp
+*.bak
