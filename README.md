@@ -1,4 +1,4 @@
-# Assignment #2 — Add / Multiply / Synthesize!
+# Assignment #2 - Add / Multiply / Synthesize!
 Course 22051: Signals and Linear Systems in Discrete Time  
 Author: Yann Ducrest (s251889)
 
@@ -34,6 +34,7 @@ numpy
 scipy
 matplotlib
 ipykernel
+jupyter
 ```
 
 ## Repository Structure
@@ -91,5 +92,5 @@ If files are missing, simply re-run the notebook, all outputs are generated prog
 
 ## Acknowledgements
 
-This project was created for the course *22051 — Signals and Linear Systems in Discrete Time*.
+This project was created for the course *22051 - Signals and Linear Systems in Discrete Time*.
 It demonstrates how **core DSP theory**, sampling, convolution, filtering, and modulation, can be transformed into a **creative and perceptible synthesis process**.
